@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <!-- property binding [disabled] -->
+            <!-- Event binding (click) -->
+            <button [disabled]="studentProfile" class="btn btn-primary" (click)="onGetStudentProfile()">Student Profile</button><br>
+            <!-- String interpolation {{ }}-->
+            <span>{{ studentProfile}}</span><br>
+            <!-- you can use property binding instead of string interpolation -->
+            <span [innerText]="studentProfile"></span>
+        </div>
+    </div>
+</div>
+<div *ngIf="showProfile" class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <label>Name</label><br>
+        </div>
+        <div class="col-xs-6">
+            <!-- String interpolation for property and method-->
+            <span>{{ students.Name }}</span><br>
+            <span>{{ getStudentsName() }}</span><br>
+            <!-- Passing and using data with Event binding -->
+            <input type="text" class="form-control" (input)="onUpdateEmail($event)">
+            <span> {{ students.Mail_ID }}</span>
+            <!-- <input type="text" class="form-control" (input)="onUpdateAddress($event)">
+            <span> {{ students.Address }}</span> -->
+            <!-- Two-way data binding -->
+            <input type="text" class="form-control" [(ngModel)]="students.Mail_ID">
+            
+        </div>
+    </div>
+</div>
+<app-comp-databind [logeshData]="students" [nameData]="name" ></app-comp-databind>
