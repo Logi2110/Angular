@@ -1,0 +1,15 @@
+<ng-content></ng-content>
+
+<label>Doctor Name</label>
+<!-- Using ngModel for passing data -->
+<input type="text" class="form-control" [(ngModel)]="newDoctorName">
+<button class="btn btn-primary" (click)="onChangeDoctorName()">Emit properties using output</button>
+
+<!-- Using local reference, only used within html -->
+<!-- Local reference have all the properties of input element && output-->
+<input type="text" class="form-control" #newDoctorName2> 
+<button class="btn btn-primary" (click)="onChangeDoctorName2(newDoctorName2)">Emit alias properties using output</button>
+
+<!-- Local reference have all the properties of input element && output && viewchild-->
+<input type="text" class="form-control" #newDoctorName3> 
+<button class="btn btn-primary" (click)="onChangeDoctorName3(newDoctorName3)">Emit properties using output and viewchild</button>

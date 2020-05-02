@@ -1,0 +1,7 @@
+<p>comp-lifecycle works!</p>
+<ng-content></ng-content>
+<input type="text" class="form-control" [(ngModel)]="componentVariable">
+<button class="btn btn-primary" (click)="onChangeComponentVariable()">Emit properties using output</button>
+
+<input type="text" class="form-control" [(ngModel)]="mitVariableInput">
+<input type="text" class="form-control" #viewChildRef>{{ doctorName }}

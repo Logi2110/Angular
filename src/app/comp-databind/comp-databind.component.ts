@@ -7,14 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CompDatabindComponent implements OnInit {
   @Input() public logeshData;
-  @Input('nameData') public name;
+  @Input('nameData') public name;    // using alias
 
   constructor() {  // input value is undefined in constructor
-    console.log(this.logeshData);
+    // console.log(this.logeshData);
   }
   ngOnInit() {
-    console.log(this.logeshData);  // got input value
-    console.log(this.name);
+    // console.log(this.logeshData);  // got input value
+    // console.log(this.name);
   }
 
 }

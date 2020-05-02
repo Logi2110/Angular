@@ -1,17 +1,18 @@
+<!-- Property and event binding within Component -->
 <div class="container">
     <div class="row">
         <div class="col-xs-6">
             <!-- property binding [disabled] -->
             <!-- Event binding (click) -->
             <button [disabled]="studentProfile" class="btn btn-primary" (click)="onGetStudentProfile()">Student Profile</button><br>
-            <!-- String interpolation {{ }}-->
+            <!-- String interpolation {{ }} = used to print-->
             <span>{{ studentProfile}}</span><br>
-            <!-- you can use property binding instead of string interpolation -->
+            <!-- you can use property binding instead of string interpolation = used only to bind property-->
             <span [innerText]="studentProfile"></span>
         </div>
     </div>
 </div>
-<div *ngIf="showProfile" class="container">
+<div *ngIf="showProfile; else message" class="container">
     <div class="row">
         <div class="col-xs-6">
             <label>Name</label><br>
@@ -27,8 +28,26 @@
             <span> {{ students.Address }}</span> -->
             <!-- Two-way data binding -->
             <input type="text" class="form-control" [(ngModel)]="students.Mail_ID">
-            
         </div>
     </div>
 </div>
+<ng-template #message>
+    <span>To get the student profile press the student profile button</span>
+</ng-template>
+
+
+<!-- Component property and event binding -->
 <app-comp-databind [logeshData]="students" [nameData]="name" ></app-comp-databind>
+<app-databinding (doctorName)="getDoctorName($event)"
+                (favouriteDoctor)="getDoctorName2($event)"
+                (doctorName3)="getDoctorName3($event)">
+<!-- we can place the content of the mit component to databind component 
+    using ng-content in databind component-->
+    <input type="text" class="form-control" [(ngModel)]="students.Mail_ID">
+                 
+</app-databinding>
+
+<app-comp-lifecycle [mitVariableInput]="students.Mail_ID"
+                (componentVariableOutput)="getDoctorName($event)">
+    <input type="text" class="form-control" [(ngModel)]="students.Mail_ID">
+</app-comp-lifecycle>
